@@ -352,37 +352,3 @@ tableBody.addEventListener('click', (e) => {
     // Mostrar modal
     confirmReadModal.show();
 });
-
-
-
-
-
-
-
-
-
-
-/*/// logica actualizacion
-document.querySelector("#formularioActualizar").addEventListener("submit", function(event) {
-  event.preventDefault();
-  fetch("update.php", {
-    method: "POST",
-    body: new FormData(this)
-  })
-  .then(response => response.json())
-
-  .then(data => {
-    if (data.success) {
-      const alerta = document.getElementById('alertaActualizar');
-
-
-
-      alerta.style.display = 'block';
-      alerta.querySelector('strong').textContent = data.message;
-      setTimeout(() => { alerta.style.display = 'none'; }, 5000);
-    } else {
-      alert(data.message);
-    }
-  })
-  .catch(err => console.error("Error actualizando vehículo:", err));
-});*/
