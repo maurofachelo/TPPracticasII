@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="stylesheet" href="style.css" /> -->
@@ -22,13 +23,20 @@
     <h1 class="text-center">La Concesionaria</h1>
     <div class="col-md-12 row">
       <div class="col-md-6">
-        <form method="POST" action="create.php" enctype="multipart/form-data">
-          <!-- <input
-            type="number"
-            name="idVehiculo"
-            placeholder="ID (solo actualizar/borrar)"
-          /> -->
+        <form
+          id="formularioPrincipal"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="patente"
+                placeholder="Patente"
+              />
+            </div>
             <div class="col-md-4">
               <input
                 type="text"
@@ -45,6 +53,9 @@
                 placeholder="Modelo"
               />
             </div>
+          </div>
+
+          <div class="row">
             <div class="col-md-4">
               <select name="tipo" class="form-select" id="tipo">
                 <option value="" selected disabled>Tipo</option>
@@ -52,76 +63,92 @@
                 <option value="Suv">SUV</option>
                 <option value="Coupe">Coupé</option>
                 <option value="Utilitario">Utilitario</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="anio"
+                placeholder="Año"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="kilometraje"
+                placeholder="Kilometraje"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="precio"
+                placeholder="Precio U$S"
+              />
+            </div>
+            <div class="col">
+              <select name="combustible" id="combustible" class="form-select">
+                <option value="" selected disabled>Combustible</option>
+                <option value="nafta">Nafta</option>
+                <option value="naftaGNC">Nafta y GNC</option>
+                <option value="diesel">Diesel</option>
+                <option value="electrico">Eléctrico</option>
+              </select>
+            </div>
+            <div class="col">
+              <input
+                type="date"
+                class="form-control"
+                name="fechaIngreso"
+                placeholder="Fecha de Ingreso"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="estadoMotor">Estado del Motor</label>
+              <select name="estadoMotor" id="estadoMotor">
+                <option value="" selected disabled>Valor</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="estadoInterior">Estado del Interior</label>
+              <select name="estadoInterior" id="estadoInterior">
+                <option value="" selected disabled>Valor</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label for="estadoExterior">Estado del Exterior</label>
+              <select name="estadoExterior" id="estadoExterior">
+                <option value="" selected disabled>Valor</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
           </div>
 
-          <input
-            type="number"
-            class="form-control"
-            name="anio"
-            placeholder="Año"
-          />
-          <input
-            type="number"
-            class="form-control"
-            name="kilometraje"
-            placeholder="Kilometraje"
-          />
-
-          <label for="combustible">Tipo de Combustible</label>
-          <select name="combustible" id="combustible">
-            <option value="nafta">Nafta</option>
-            <option value="naftaGNC">Nafta y GNC</option>
-            <option value="diesel">Diesel</option>
-            <option value="electrico">Eléctrico</option>
-          </select>
-
-          <input
-            type="number"
-            class="form-control"
-            name="precio"
-            placeholder="Precio"
-          />
-
-          <label for="fechaIngreso">Fecha de Ingreso del Vehículo</label>
-          <input
-            type="date"
-            class="form-control"
-            name="fechaIngreso"
-            placeholder="Fecha de Ingreso"
-          />
-
-          <br />
-
-          <label for="estadoMotor">Estado del Motor</label>
-          <select name="estadoMotor" id="estadoMotor">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <label for="estadoInterior">Estado del Interior</label>
-          <select name="estadoInterior" id="estadoInterior">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <label for="estadoExterior">Estado del Exterior</label>
-          <select name="estadoExterior" id="estadoExterior">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <label for="imagenes">Fotos del vehículo</label>
           <input
             type="file"
             name="imagenes[]"
@@ -130,34 +157,215 @@
             accept="image/*"
           />
 
-          <br /><br />
+          <div class="row">
+            <button class="col" type="submit" formaction="create.php">
+              Agregar
+            </button>
+            <button class="col" type="button" id="btnConsultar">
+              Consultar
+            </button>
+            <button
+              class="btn btn-warning col"
+              type="button"
+              id="btnActualizar"
+            >
+              Actualizar
+            </button>
 
-          <button type="submit" formaction="create.php">Agregar</button>
-          <button type="submit" formaction="read.php">Consultar</button>
-          <button type="submit" formaction="update.php">Actualizar</button>
-          <button type="submit" formaction="delete.php">Borrar</button>
-          <button type="reset">Limpiar</button>
+            <!--<div
+              id="alertaActualizar"
+              class="alert alert-success alert-dismissible fade show"
+              role="alert"
+              style="display: none"
+            >
+              Los datos del vehiculo fueron actualizados correctamente.
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div> -->
+
+            <button type="button" class="btn btn-danger col" id="btnBorrar">
+              Borrar
+            </button>
+            <button class="col" type="reset">Limpiar</button>
+          </div>
         </form>
       </div>
       <div class="col-md-6">
-        <table>
+        <table class="table table-bordered w-100">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Año</th>
-              <th>Combustible</th>
-              <th>Precio</th>
-              <th>Ingreso</th>
-              <th>Acciones</th>
+              <th class="col1">Patente</th>
+              <th class="col1">Marca</th>
+              <th class="col1">Modelo</th>
+              <th class="col">Año</th>
+              <th class="col1">Precio</th>
+              <th class="col1">Ingreso</th>
+              <th class="col1">Fotos</th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Aquí se agregarán las filas con los datos de los vehículos -->
-          </tbody>
+          <tbody id="tablaVehiculos"></tbody>
         </table>
       </div>
     </div>
+    <!-- Modal Confirmacion de Borrar -->
+    <div
+      class="modal fade"
+      id="confirmDeleteModal"
+      tabindex="-1"
+      aria-labelledby="confirmDeleteLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmDeleteLabel">
+              Confirmar Eliminación
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body" id="deleteModalBody">
+            <!-- Aquí se completarán los datos del vehículo -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+              Borrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Confirmacion de ACTUALIZAR -->
+    <div
+      class="modal fade"
+      id="confirmUpdateModal"
+      tabindex="-1"
+      aria-labelledby="confirmUpdateLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmUpdateLabel">
+              Confirmar Actualizacion
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body" id="updateModalBody">
+            <!-- Aquí se completarán los datos del vehículo -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmUpdateBtn">
+              Actualizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Alta -->
+    <div
+      class="modal fade"
+      id="modalResultadoAlta"
+      tabindex="-1"
+      aria-labelledby="modalResultadoAltaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="modalResultadoAltaLabel">
+              Resultado del Alta
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body" id="resultadoAltaBody">
+            <!-- Mensaje dinámico -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal LEER -->
+    <div
+      class="modal fade"
+      id="confirmReadModal"
+      tabindex="-1"
+      aria-labelledby="confirmReadLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmReadLabel">
+              Informacion Completa del vehiculo
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body col-md-12" id="updateModalBody">
+            <div class="col-md3" id="modalReadAtributos"></div>
+            <div class="col-md3" id="modalReadImagenes"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
