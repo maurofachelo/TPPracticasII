@@ -44,7 +44,7 @@ if ($conn->query($sqlVehiculo) === TRUE) {
         'success' => true,
         'message' => "Vehículo cargado exitosamente",
         'detalle' => [
-            'patente' => 'Patente: '.$patente,
+            'patente' => $patente,
             'marca' => 'Marca: '.$marca,
             'modelo' => 'Modelo: '.$modelo,
             'anio' => 'Año: '.$anio,

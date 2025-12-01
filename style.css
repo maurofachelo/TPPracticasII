@@ -269,13 +269,60 @@ select[name="estadoExterior"]{
 }
 
 
+/* ========== ESTILOS DEL HEADER ========== */
+.main-header {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 12px 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+    min-width: 300px;
+}
 
-/*///////////////// imagenes modal read /////////////////*/
-     /*   .vehicle-image {
-            max-height: 300px;
-            object-fit: cover;
-            width: 100%;
-        }
-        .info-section {
-            margin-bottom: 1.5rem;
-        }*/
+/* Agregar margen al h1 para que no quede detrás del header */
+h1.text-center {
+    margin-top: 80px !important; /* Espacio para el header fijo */
+}
+
+/* Asegurar que el contenido principal tenga espacio */
+.col-md-12.row {
+    margin-top: 20px;
+}
+
+/* Responsive - Correcciones */
+@media (max-width: 768px) {
+    .main-header {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 10px auto 20px auto;
+        width: 90%;
+        min-width: auto;
+    }
+    
+    /* En móvil, quitar el margen del h1 */
+    h1.text-center {
+        margin-top: 20px !important;
+    }
+}
+
+/* Efectos de animación para el header */
+@keyframes slideInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+}
+
+.main-header {
+    animation: slideInHeader 0.5s ease-out;
+}

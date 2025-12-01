@@ -1,22 +1,23 @@
 let currentOffset = 0;
-const limit = 5;
+const limit = 6;
+
 const tableBody = document.querySelector("#tablaVehiculos");
 const paginationDiv = document.createElement("div");
 paginationDiv.classList.add("pagination"); //<div class="pagination"></div>
 
-const btnBorrar = document.getElementById("btnBorrar");
+const btnBorrar = document.querySelector("#btnBorrar");
 const confirmDeleteModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-const deleteModalBody = document.getElementById('deleteModalBody');
-const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+const deleteModalBody = document.querySelector('#deleteModalBody');
+const confirmDeleteBtn = document.querySelector('#confirmDeleteBtn');
 
 const btnActualizar = document.querySelector("#btnActualizar");
 const confirmUpdateModal = new bootstrap.Modal(document.getElementById('confirmUpdateModal'));
-const updateModalBody = document.getElementById('updateModalBody');
-const confirmUpdateBtn = document.getElementById('confirmUpdateBtn');
+const updateModalBody = document.querySelector('#updateModalBody');
+const confirmUpdateBtn = document.querySelector('#confirmUpdateBtn');
 
 const confirmReadModal = new bootstrap.Modal(document.getElementById('confirmReadModal'));
-const modalReadAtributos = document.getElementById('modalReadAtributos');
-const modalReadImagenes = document.getElementById('modalReadImagenes');
+const modalReadAtributos = document.querySelector('#modalReadAtributos');
+const modalReadImagenes = document.querySelector('#modalReadImagenes');
 
 
                                           //funcion validar patente ABC123 o AB123CD
@@ -289,9 +290,9 @@ function cargarImagenesVehiculo(patente) {
                 imagenes.forEach(imagen => {
                     htmlImagenes += `
                         <img src="fotos/${imagen.rutaImagen}" 
-                             class="img-thumbnail" 
-                             style="width: 100px; height: 80px; object-fit: cover;"
-                             alt="Vehículo ${patente}">
+                        class="img-thumbnail" 
+                        style="width: 100px; height: 80px; object-fit: cover;"
+                        alt="Vehículo ${patente}">
                     `;
                 });
                 htmlImagenes += '</div>';
@@ -339,8 +340,8 @@ tableBody.addEventListener('click', (e) => {
                 <p><strong>Combustible:</strong> ${combustible || 'N/A'}</p>
                 <p><strong>Precio:</strong> ${precio ? '$' + parseInt(precio).toLocaleString() : 'N/A'}</p>
             </div>
+        <p class= "col-12 center"><strong>Fecha de ingreso:</strong> ${fechaIngreso || 'N/A'}</p>
         </div>
-        <p><strong>Fecha de ingreso:</strong> ${fechaIngreso || 'N/A'}</p>
     `;
     
     // Mostrar atributos

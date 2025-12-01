@@ -1,46 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>Concesionaria Beltran</title>
+
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tu hoja de estilos global -->
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <form class="form1">
-      <div class="col-2">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
+    <h1 class="text-center">Concesionaria Beltran</h1>
+    <!-- CONTENEDOR PRINCIPAL ESTILO GLASS -->
+    <div class="login-wrapper row justify-content-center align-items-start">
+      <!-- LOGIN -->
+      <div class="col-md-5 p-3">
+        <div class="login-box form1">
+          <h1 class="text-center mb-3">Iniciar Sesión</h1>
+
+          <form id="formularioLogin">
+            <input
+              class="form-control"
+              type="text"
+              name="legajo"
+              placeholder="Legajo"
+              required
+            />
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              required
+            />
+            <button type="submit" class="btn btn-primary w-100 mt-2">
+              Ingresar
+            </button>
+            <input type="hidden" name="login" value="1" />
+          </form>
+        </div>
       </div>
-      <div class="col-2">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-        />
+
+      <!-- REGISTRO -->
+      <div class="col-md-5 p-3">
+        <div class="login-box form1">
+          <h1 class="text-center mb-3">Registro</h1>
+
+          <form id="formularioRegistro">
+            <input
+              class="form-control"
+              type="text"
+              name="legajo"
+              placeholder="Legajo"
+              required
+            />
+            <input
+              class="form-control"
+              type="text"
+              name="nombre"
+              placeholder="Nombre y Apellido"
+              required
+            />
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              placeholder="Correo"
+              required
+            />
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              required
+            />
+            <button type="submit" class="btn btn-success w-100 mt-2">
+              Registrarse
+            </button>
+            <input type="hidden" name="registrar" value="1" />
+          </form>
+        </div>
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+
+    <!-- Modal REGISTRO USUARIO -->
+    <div class="modal fade" id="modalRegistro" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">Registro</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body" id="modalRegistroBody"></div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+
+    <!-- Modal LOGIN USUARIO -->
+    <div class="modal fade" id="modalLogin" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Inicio de Sesión</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body" id="modalLoginBody"></div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Continuar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 5;
+$limit = isset($_GET['limit']) ? intval($_GET['limit']) : 6;
 $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
 
 // Filtros desde la URL
@@ -22,7 +22,7 @@ $sql = "SELECT v.patente, v.marca, v.modelo, v.tipo, v.anio, v.kilometraje,
         FROM vehiculos AS v
         WHERE 1=1";
 
-// Aplicar filtros dinámicos
+// filtros dinámicos
 if ($patente !== '') $sql .= " AND v.patente = '$patente'";
 if ($marca !== '') $sql .= " AND v.marca LIKE '%$marca%'";
 if ($modelo !== '') $sql .= " AND v.modelo LIKE '%$modelo%'";
