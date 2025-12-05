@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Para borrar necesitamos la Patente/ID
+// borramos por patente
 $patente = $_POST['Patente'] ?? '';
 
 if (empty($patente)) {

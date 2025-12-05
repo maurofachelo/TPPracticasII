@@ -1,8 +1,6 @@
 <?php
 include 'conexion.php';
 
-/*error_reporting(0);           codigo agregado en busca de errores
-ini_set('display_errors', 0); */
 
 $patente = $_POST['patente'] ?? '';
 $marca = $_POST['marca'] ?? '';

@@ -1,68 +1,53 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    // Modal REGISTRO USUARIO
+    // 1. REGISTRO DE USUARIO (manteniendo tu estructura básica)
     document.querySelector("#formularioRegistro").addEventListener("submit", function(e) {
         e.preventDefault();
         
-        const formData = new FormData(this);
-        formData.append('registrar', '1');
-
         fetch("Login.php", {
             method: "POST",
-            body: formData
+            body: new FormData(this)
         })
         .then(r => r.json())
         .then(data => {
-            const body = document.getElementById("modalRegistroBody");
             const modal = new bootstrap.Modal(document.getElementById("modalRegistro"));
-            
-            body.innerHTML = `<p class="${data.ok ? "text-success" : "text-danger"}"><strong>${data.msg}</strong></p>`;
+            document.getElementById("modalRegistroBody").innerHTML = 
+                `<p class="${data.ok ? "text-success" : "text-danger"}"><strong>${data.msg}</strong></p>`;
             modal.show();
             
-            if (data.ok) {
-                this.reset();
-            }
+            if (data.ok) this.reset();
         })
-        .catch(err => {
-            console.error("Error:", err);
-            alert("Error de conexión");
-        });
+        .catch(err => alert("Error de conexión"));
     });
 
-    // Modal LOGIN USUARIO
+    // 2. LOGIN DE USUARIO (versión simplificada)
     document.querySelector("#formularioLogin").addEventListener("submit", function(e) {
         e.preventDefault();
         
-        const formData = new FormData(this);
-        formData.append('login', '1');
-
         fetch("Login.php", {
             method: "POST",
-            body: formData
+            body: new FormData(this)
         })
         .then(r => r.json())
         .then(data => {
-            const body = document.getElementById("modalLoginBody");
+            // Mostrar mensaje en modal
             const modal = new bootstrap.Modal(document.getElementById("modalLogin"));
-            
-            body.innerHTML = `<p class="${data.ok ? "text-success" : "text-danger"}"><strong>${data.msg}</strong></p>`;
+            document.getElementById("modalLoginBody").innerHTML = 
+                `<p class="${data.ok ? "text-success" : "text-danger"}"><strong>${data.msg}</strong></p>`;
             modal.show();
-
-            // Si el login es exitoso, guardar datos del usuario
+            
+            // Si login es exitoso
             if (data.ok) {
-                // Guardar en localStorage para usar en el header
-                localStorage.setItem('usuarioConcesionaria', data.legajo || 'Usuario');
-                localStorage.setItem('nombreUsuario', data.nombre || 'Usuario');
+                // Guardar datos del usuario
+                localStorage.setItem('usuarioConcesionaria', data.legajo);
+                localStorage.setItem('nombreUsuario', data.nombre);
                 
-                // Redirigir después de un breve delay
+                // Redirigir después de mostrar el modal brevemente
                 setTimeout(() => {
                     window.location.href = "index.html";
-                }, 1500);
+                }, 1000); // 1 segundo para que se vea el mensaje
             }
         })
-        .catch(err => {
-            console.error("Error:", err);
-            alert("Error de conexión");
-        });
+        .catch(err => alert("Error de conexión"));
     });
 });
